@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#8fc8f2" />
+  <meta name="description" content="Consulte o clima atual, previsão de cinco dias e compare cidades." />
+  <title>APIMETEO · Monitorização Meteorológica</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="theme-default">
+  <div id="weather-animation-bg" class="weather-bg"></div>
+
+  <div class="container">
+    <header class="header">
+      <span class="eyebrow">APIMETEO · MONITORAMENTO INTELIGENTE</span>
+      <h1>O clima, em tempo real.</h1>
+      <p class="intro">Acompanhe o céu, explore a previsão e compare destinos.</p>
+    </header>
+
+    <section class="card search-card">
+      <label for="city-input">Qual cidade deseja consultar?</label>
+      <div class="search-box">
+        <div class="autocomplete-wrapper">
+          <input type="text" id="city-input" placeholder="Digite o nome da cidade (ex: Sal...)" autocomplete="off" />
+          <div id="autocomplete-list" class="autocomplete-dropdown hidden"></div>
+        </div>
+        <button id="btn-search">Consultar</button>
+      </div>
+      <small class="hint">Digite a partir de 1 caractere para encontrar uma cidade.</small>
+
+      <div id="homonyms-container" class="homonyms-box hidden">
+        <p>Escolha a localidade correta:</p>
+        <div id="homonyms-list"></div>
+      </div>
+    </section>
+
+    <section class="card history-card">
+      <h3>Consultas recentes</h3>
+      <p class="hint">Últimas 5 cidades desta sessão:</p>
+      <div id="history-list" class="history-tags"></div>
+    </section>
+
+    <section id="compare-selection-card" class="card hidden">
+      <h3>Comparar Cidades</h3>
+      <p class="hint">Escolha uma cidade recente para comparar com a cidade exibida:</p>
+      <div id="compare-buttons-container" class="compare-buttons-grid"></div>
+    </section>
+
+    <section id="weather-section" class="card hidden">
+      <div class="card-header">
+        <div>
+          <span class="kicker">DADOS EM TEMPO REAL</span>
+          <h2 id="panel-title">--</h2>
+          <p id="last-updated" class="time" style="margin-top: 4px;">Última atualização: --:--:--</p>
+        </div>
+        <button id="btn-refresh">↻ Atualizar</button>
+      </div>
+
+      <div id="comparison-wrapper" class="comparison-grid"></div>
+
+      <hr />
+      <h3>Temperaturas dos Próximos 5 Dias</h3>
+      <div class="chart-container">
+        <canvas id="tempChart"></canvas>
+      </div>
+    </section>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
